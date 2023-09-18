@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+        #box{
+            width:300px;
+            height:300px;
+            border:solid 2px black;
+            position: relative;
+            top:50px;
+            left:50px;
+        }
+        #laser1{
+            width: 80px;  
+            height: 80px;  
+            position: absolute;
+            left:-50px;
+            top:-50px;
+            background-color: #e94b2ce8;
+            transform-origin: 40px 40px;
+            transform: rotate(45deg);
+            animation:laser 0.3s linear;
+        }
+        #laser2{
+            width: 80px;  
+            height: 80px;  
+            position: absolute;
+            left:-50px;
+            top:275px;
+            background-color: #e94b2ce8;
+            transform-origin: 40px 40px;
+            transform: rotate(-45deg);
+            animation:laser 0.3s linear;
+        }
+        #laser3{
+            width: 80px;  
+            height: 80px;  
+            position: absolute;
+            left:275px;
+            top:275px;
+            background-color: #e94b2ce8;
+            transform-origin: 40px 40px;
+            transform: rotate(225deg);
+            animation:laser 0.3s linear;
+        }
+        #laser4{
+            width: 80px;  
+            height: 80px;  
+            position: absolute;
+            left:275px;
+            top:-50px;
+            background-color: #e94b2ce8;
+            transform-origin: 40px 40px;
+            transform: rotate(135deg);
+            animation:laser 0.3s linear;
+        }
+        #RndBox{
+            width:50px;
+            height:50px;
+            background: red;
+            position: absolute;
+            left:125px;
+            top:125px;
+            animation:RndMove 0.5s linear infinite;
+        }
+        @keyframes laser{
+        from{width:80px;}
+        to{width:500px;}
+        }
+        @keyframes RndMove{
+        }
+  </style>
+  <script>
+        var sett = 20;
+        var style = document.styleSheets[0];
+        function mov(){
+            t1 = setInterval(RandomMove, 100);
+        }
+        function RandomMove(){
+            style.insertRule(`@keyframes RndMove{from{ left:${nowX}px; top:${nowY}px; }to{ left:${posX}px;top:${posX}px; }`,9);   //寫入樣式
+        }
+        //  碰撞偵測
+	    if (
+		    user.x <= (laser.x + 32)
+            && laser.x <= (user.x + 32)
+            && user.y <= (laser.y + 32)
+            && laser.y <= (user.y + 32)
+	    ) {
+		    health--;
+	    }
+  </script>
+  </head>
+  <body>
+    <div id="box">
+        <div id="RndBox"></div>
+        <div id="laser1"></div>
+        <div id="laser2"></div>
+        <div id="laser3"></div>
+        <div id="laser4"></div>
+    </div>
+  </body>
+
+</html>
