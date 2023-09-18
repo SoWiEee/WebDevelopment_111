@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #bullet1{
+            width: 10px;
+            height: 30px;
+            background: #FF7373;
+            position: absolute;
+        }
+        #bullet2{
+            width: 30px;
+            height: 10px;
+            background: #FF7373;
+            position: absolute;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            border: 2px solid #FF7373;
+            position: absolute;
+            background-image:url('網頁-02.jpg');
+            background-size: cover;
+        }
+        #playBlock{
+            width: 100px;
+            height: 100px;
+            border: 2px solid #00AE80;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+        #user{
+            width: 20px;
+            height: 20px;
+            background-color:#fcaf29;
+            position: absolute;
+            left: 40px;
+            top: 40px;
+        }
+    </style>
+</head>
+<body style="background-image:url('網頁-01.jpg'); background-size: cover;">
+    <audio id="BGM"><source src="BGM.mp3" type="audio/mp3"></audio>
+    <audio id="punch"><source src="punch.mp3" type="audio/mp3"></audio>
+    <br>
+    <button style="background-color:#87e9c8" id="btn" onclick="gameStart();">【開始遊戲】</button>
+    <div style="font-size:26px; font-family: Helvetica ;color:#53ccf0">Time：<span id="timer">30</span></div>
+    <div style="font-size:26px; font-family: Helvetica ;color:#53ccf0">Health：<span id="healthSet">10</span></div>
+    <br>
+    <div id="box">
+        <div id="playBlock">
+            <div id="user"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 取亂數
+        function rand(min,max){
+            return Math.floor(Math.random() * (max-min) + min);
+        }
+
+        // 抓到id
+        function get(id){
+            return document.getElementById(id);
+        }
+
+        // 監聽鍵盤事件
+        window.onload = moving();
+		function moving(event){     // bullet 移動時即時更新 user 座標
+			var user = get("user");
+			document.onkeydown = function(event){
+                event = event || window.event;
+                var userSpeed = 4;  //  移動速度（px）
+                event.preventDefault();     // 禁用快捷鍵
+                
+                switch(event.keyCode){  // 用方向鍵控制 user
+                    case 37:
+                            user.style.left = user.offsetLeft-userSpeed+"px";  //左
+                        break;
+                    case 39:
+                            user.style.left = user.offsetLeft+userSpeed+"px";  //右
+                        break;
+                    case 38:
+                            user.style.top = user.offsetTop-userSpeed+"px";  //上
+                        break;
+                    case 40:
+                            user.style.top = user.offsetTop+userSpeed+"px";  //下
+                        break;
+                }
+                // 邊界限制
+                if (parseInt(user.offsetLeft) < 0){
+                    user.style.left = user.offsetLeft+userSpeed+"px";
+                }
+                if (parseInt(user.offsetLeft) > 80){
+                    user.style.left = user.offsetLeft-userSpeed+"px";
+                }
+                if (parseInt(user.offsetTop) < 0){
+                    user.style.top = user.offsetTop+userSpeed+"px";
+                }
+                if (parseInt(user.offsetTop) > 80){
+                    user.style.top = user.offsetTop-userSpeed+"px";
+                }
+			}
+			return [user.style.left, user.style.top];	// 回傳 user 位置
+		}
+        // 上／下／左／右　隨機生成 bullet
+        function randomGen(){
+            speed = 10;
+            if (parseInt(get("timer").innerHTML) <= 11 ){     // 剩 11 秒加速
+                speed = 6;
+            }
+            count1 = rand(1,5);
+            switch (count1) {
+                case 1:
+                    spanFall_1(speed);
+                    break;
+                case 2:
+                    spanFall_2(speed);
+                    break;
+                case 3:
+                    spanFall_3(speed);
+                    break;
+                case 4:
+                    spanFall_4(speed);
+                    break;
+            }
+        }
+
+        // 遊戲開始
+        function gameStart(){
+            get("timer").innerHTML=30;
+            get("healthSet").innerHTML="10";    // 重置血量
+			get("btn").disabled = true;     // 鎖定按鈕
+			timeSet = 30;    // 設定初始時間
+            audioPlay();    // 撥放音樂
+			setTimeout(gameOver, 30001,get("BGM"));    // 60 秒後結束遊戲
+			t1 = setInterval(randomGen, 1000);  // 隨機生成 bullet（每秒）
+			t2 = setInterval(timeCount, 1000);  // 倒數計時（每秒）
+		}
+
+        /* 生成 bullet */
+        // 生成 bullet（上->下）
+        function spanFall_1(speed){
+            if (parseInt(get("timer").innerHTML) <=11 ){     // 剩 11 秒加速
+                speed = 6;
+            }
+            var bullet = document.createElement("div");
+            bullet.id = "bullet1";
+            // 設定 bullet 屬性
+            bullet.style.top = "0px";
+            bullet.style.left = `${rand(200,290)}px`;
+            get("box").appendChild(bullet);
+            t3 = setInterval(move1, speed, bullet);     // 持續移動
+        }
+        // 生成 bullet（左->右）
+        function spanFall_2(speed){  
+            if (parseInt(get("timer").innerHTML) <=11 ){     // 剩 11 秒加速
+                speed = 6;
+            }
+            var bullet = document.createElement("div");
+            bullet.id = "bullet2";
+            // 設定 bullet 屬性
+            bullet.style.left = "0px";
+            bullet.style.top = `${rand(200,290)}px`;
+            get("box").appendChild(bullet);
+            t4 = setInterval(move2, speed, bullet);     // 持續移動
+        }
+        // 生成 bullet（右->左）
+        function spanFall_3(speed){
+            if (parseInt(get("timer").innerHTML) <=11 ){     // 剩 11 秒加速
+                speed = 6;
+            }
+            var bullet = document.createElement("div");
+            bullet.id = "bullet2";
+            // 設定 bullet 屬性
+            bullet.style.left = "470px";
+            bullet.style.top = `${rand(200,290)}px`;
+            get("box").appendChild(bullet);
+            t5 = setInterval(move3, speed, bullet);     // 持續移動
+        }
+        // 生成 bullet（下->上）
+        function spanFall_4(speed){
+            if (parseInt(get("timer").innerHTML) <=11 ){     // 剩 11 秒加速
+                speed = 6;
+            }
+            var bullet = document.createElement("div");
+            bullet.id = "bullet1";
+            // 設定 bullet 屬性
+            bullet.style.top = "470px";
+            bullet.style.left = `${rand(200,290)}px`;
+            get("box").appendChild(bullet);
+            t6 = setInterval(move4, speed, bullet);   // 持續移動
+        }
+
+        /* 移動函數＋扣血判定 */
+        // 移動設定（上->下）（每個 bullet 生成後個別執行）
+        function move1(bullet){    
+            [userX, userY] = moving();      // 獲取 user 座標
+            high = parseInt(bullet.style.top);
+            if (high < 270){
+                high += 1;
+            }else{
+                bullet.remove();
+            }
+            bullet.style.top = high+"px";  // 更新Y
+            // 判斷是否重疊
+            collision(bullet);
+            if(parseInt(get("healthSet").innerHTML)==0){
+				gameOver(get("BGM"));
+			}
+        }
+        // 移動設定（左->右）（每個 bullet 生成後個別執行）
+        function move2(bullet){
+            [userX, userY] = moving();      // 獲取 user 座標
+            left = parseInt(bullet.style.left);
+            if (left < 270){
+                left += 1;
+            }else{
+                bullet.remove();
+            }
+            bullet.style.left = left+"px";
+            // 判斷是否重疊
+            collision(bullet);
+            if(parseInt(get("healthSet").innerHTML)==0){
+				gameOver(get("BGM"));
+			}
+        }
+        // 移動設定（右->左）（每個 bullet 生成後個別執行）
+        function move3(bullet){
+            [userX, userY] = moving();      // 獲取 user 座標
+            left = parseInt(bullet.style.left);
+            if (left <= 470 && left > 200){
+                left -= 1;
+            }else{
+                bullet.remove();
+            }
+            bullet.style.left = left+"px";
+            // 判斷是否重疊
+            collision(bullet);
+            if(parseInt(get("healthSet").innerHTML)==0){
+				gameOver(get("BGM"));
+			}
+        }
+        // 移動設定（下->上）（每個 bullet 生成後個別執行）
+        function move4(bullet){
+            [userX, userY] = moving();      // 獲取 user 座標
+            high = parseInt(bullet.style.top);
+            if (high <= 470 && high > 200){
+                high -= 1;
+            }else{
+                bullet.remove();
+            }
+            bullet.style.top = high+"px";
+            // 判斷是否重疊
+            collision(bullet);
+            if(parseInt(get("healthSet").innerHTML)==0){
+				gameOver(get("BGM"));
+			}
+        }
+        // 碰撞判定
+        function collision(bullet) {
+            domRect1 = bullet.getBoundingClientRect();
+            domRect2 = get("user").getBoundingClientRect();
+            if (domRect1.top-111 > domRect2.bottom-107 ||
+                domRect1.right < domRect2.left ||
+                domRect1.bottom-111 < domRect2.top-107 ||
+                domRect1.left > domRect2.right){
+            }else{
+                if(get("timer").innerHTML > 0){
+                    get("healthSet").innerHTML = parseInt(get("healthSet").innerHTML)-1;
+                    punch();
+                }
+                bullet.remove();
+            }
+        }
+        // 倒數計時
+        function timeCount(){
+            timeSet--;
+            get("timer").innerHTML =parseInt(get("timer").innerHTML)-1;    // 更新顯示時間
+        }
+
+        // 遊戲結束
+        function gameOver(music){
+            clearInterval(t1);      // 停止生成 bullet
+            clearInterval(t2);      // 停止倒數
+            music.pause();      // 停止播放
+            music.currentTime = 0;      // 重置音樂
+            get("btn").disabled = false;    // 解鎖按鈕
+        }
+        // 擊中音效
+        function punch(){   
+            var effect = get("punch");
+            effect.volume = 0.4;
+            effect.play();
+		}
+        // 音樂播放
+		function audioPlay(){   
+            var audio = get("BGM");
+            audio.volume = 0.7;     // 音量設定
+            audio.play();   // 播放音樂
+		}
+    </script>
+    </body>
+</html>
