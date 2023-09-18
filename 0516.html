@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            #board{
+                display:grid;
+                grid:auto / 100px 100px 100px 100px;
+            }
+            img{
+                width:100px;
+                height:100px;
+            }
+        </style>
+        <script>
+            var cards=[1,1,2,3,3,4,4,5,5,6,6];
+            function gameStart(){
+                cards.sort(function(a,b){return Math.random()-0.5;});
+            }
+            function choose(img,idx){
+                img.src="img/"+cards[idx]+".png";
+            }
+        </script>
+    </head>
+    <body>
+        <div id="board">
+            <img src="img/0.png" onclick="choose(this,0);">
+            <img src="img/0.png" onclick="choose(this,1);">
+            <img src="img/0.png" onclick="choose(this,2);">
+            <img src="img/0.png" onclick="choose(this,3);">
+            <img src="img/0.png" onclick="choose(this,4);">
+            <img src="img/0.png" onclick="choose(this,5);">
+            <img src="img/0.png" onclick="choose(this,6);">
+            <img src="img/0.png" onclick="choose(this,7);">
+            <img src="img/0.png" onclick="choose(this,8);">
+            <img src="img/0.png" onclick="choose(this,9);">
+            <img src="img/0.png" onclick="choose(this,10);">
+            <img src="img/0.png" onclick="choose(this,11);">
+        </div>
+        <button></button>
+    </body>
+</html>
