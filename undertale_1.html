@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undertale</title>
+    <script type="text/javascript">
+      function getMousePos(event) {
+        var e = event || window.event;
+        var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+        var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+        var x = e.pageX || e.clientX + scrollX;
+        var y = e.pageY || e.clientY + scrollY;
+        console.log(parseInt(x)+", "+parseInt(y));
+        //return { 'x': x, 'y': y };
+      } 
+    </script>
+    <style>
+      #box{
+        width: 500px;
+        height: 300px;
+        border: solid black 2px;
+        position: relative;
+        left:200px;
+      }
+      #soul{  /* 玩家操控 */
+        width: 50px;
+        height: 50px
+      }
+      #gun{
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(-30deg) scale(1,10) ;
+      }
+    </style>
+  </head>
+  <body>
+    <div>遊戲測試</div>
+    <button onclock="getMousePos(event);">Test</button>
+    <div id="box">
+      <img id="soul" src="soul.png"/>
+      <div id="gun"></div>
+    </div>
+  </body> 
+</html>
