@@ -1,0 +1,128 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>21222 鄭珽升 910351</title>
+	<style>
+	#face {
+		width: 180px;
+		height: 250px;
+		position: relative;
+		left: 10px;
+		background: linear-gradient(#FFD3A8, #4d6613);
+		border-radius: 50% 50% 70% 70%;
+	}
+
+    #hair {
+        width: 200px;
+		height: 60px;
+		position: relative;
+		right: 10px;
+		background:#443f3f;
+		border-radius: 30% 30% 10% 10%;
+    }
+
+    #e-hairL{
+        display: inline-block;
+		width: 60px;
+		height: 15px;
+		position: relative;
+		left: 20px;
+		background:#4d371a;
+		border-radius: 30%;
+    }
+
+    #e-hairR{
+		display: inline-block;
+        width: 60px;
+		height: 15px;
+		position: relative;
+		left: 85px;
+		background:#4d371a;
+		border-radius: 30%;
+    }
+
+	#nose {
+		display: inline-block;
+		width: 2px;
+		height: 0px;
+		position: relative;
+		left: 60px;
+		border: solid transparent;
+		border-bottom-color:#ee9849 ;
+		border-width: 0px 10px 30px 10px;
+	}
+	
+	#mouth {
+		display: inline-block;
+		width: 100px;
+		height: 30px;
+		position: relative;
+		left: 20px;
+		background:#FFD3A8;
+		border-radius: 60% 60% 0% 0%;
+	}
+
+	#tongue{
+		width: 30px;
+		height: 15px;
+		background:#db507f;
+		border-radius: 60% 60% 0% 0%;
+		position: relative;
+		left: 35px;
+		top: 15px;
+	}
+
+	#L_Eye {
+        width: 50px;
+        height: 50px;
+		position: absolute;
+        left: 5px;
+        top: 15px;
+        background: radial-gradient(circle,
+		black 0%, black 20%, white 20%, white 40%, white 40%,
+		white 60%, white 60%, white 80%, black 80%, black 100%);
+        border-radius: 50%;
+		animation: blink 0.3s infinite linear;
+	}
+
+	#R_eye {
+        width: 50px;
+        height: 50px;
+		position: absolute;
+        left: 90px;
+        top: 15px;
+        background: radial-gradient(circle,
+		black 0%, black 20%, white 20%, white 40%, white 40%,
+		white 60%, white 60%, white 80%, black 80%, black 100%);
+        border-radius:50%;
+		animation: blink 0.3s infinite linear;
+	}
+
+	@keyframes blink {
+        0%{background: radial-gradient(circle,
+		white 0%, white 20%, black 20%, black 40%, white 40%,
+		white 60%, white 60%, white 80%, white 80%, white 100%);}
+		33%{background: radial-gradient(circle,
+		white 0%, white 20%, white 20%, white 40%, black 40%,
+		black 60%, white 60%, white 80%, white 80%, white 100%);}
+		66%{background: radial-gradient(circle,
+		white 0%, white 20%, white 20%, white 40%, white 40%,
+		white 60%, black 60%, black 80%, white 80%, white 100%);}
+		100%{background: radial-gradient(circle,
+		black 0%, black 20%, white 20%, white 40%, white 40%,
+		white 60%, white 60%, white 80%, black 80%, black 100%);}
+	}
+	</style>
+</head>
+<body>
+	<div id="face">
+		<div id="hair"></div><br>
+        <div id="e-hairL"><div id="e-hairR"></div><br><br>
+        <div id="L_eye"></div><div id="R_eye"></div>
+        <br>
+		<div id="nose"></div>
+		<br><br>
+		<div id="mouth"><div id="tongue"></div></div>
+	</div>
+</body>
+</html>
