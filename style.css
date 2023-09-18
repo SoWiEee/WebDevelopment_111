@@ -1,0 +1,106 @@
+index{
+   color:#7B7B7B ;
+}
+
+#grad1{
+		background:linear-gradient(55deg,#FF77FF,#CA8EFF,#2894FF);
+		height:40px;
+		width:590px;
+}
+
+    /* 鑽石 */
+    #dia1{
+         width: 40px;
+         height: 40px;
+         border: 30px solid;
+        border-color: transparent transparent#63dcec transparent;
+    }
+    #dia2{
+        width: 0px;
+        height: 0px;
+        border: 50px solid;
+        border-color:#63dcec transparent transparent transparent;
+    }
+
+    /* 聖誕樹 */
+    #c_tree1{
+        width: 0px;
+        height: 0px;
+        border: 50px solid;
+        margin-left: 60px;
+        border-color: transparent transparent #3beb18 transparent;
+        z-index: 0;
+    }
+    #c_tree2{
+        width: 0px;
+        height: 0px;
+        border: 80px solid;
+        border-color: transparent transparent #35ce17 transparent;
+        position: relative;
+        left:30px;
+        bottom: 110px;
+        z-index: -1;
+    }
+    #c_tree3{
+        width: 0px;
+        height: 0px;
+        border: 110px solid;
+        border-color: transparent transparent #279c0f transparent;
+        position: relative;
+        bottom: 280px;
+        z-index: -2;
+    }
+    #c_tree4{
+        width: 50px;
+        height: 100px;
+        margin-left: 85px;
+        background:#81615d;
+        position: relative;
+        bottom: 280px;
+    }
+    /* 冰淇淋 */
+    #ice1{
+        width: 100px;
+        height: 50px;
+        background-color:rgb(211, 210, 202);
+        border-radius: 50px 50px 0 0;
+        position: relative;
+        top: 20px;
+    }
+    #ice2{
+        width: 100px;
+        height: 50px;
+        background-color:rgb(219, 74, 154);
+        border-radius: 50px 50px 0 0;
+    }
+    #ice3{
+        width: 0px;
+        height: 0px;
+        border: 50px solid;
+        border-color:#81615d transparent transparent transparent;
+        border-top-width: 150px;
+    }
+    /* 自行創作 */
+    #amd1{
+        width: 30px;
+        height: 30px;
+        border: 25px solid;
+        border-color:black;
+    }
+    #amd2{
+        width: 0px;
+        height: 0px;
+        border: 25px solid;
+        border-color:transparent transparent white transparent;
+        margin-left:30px;
+        position: relative;
+        bottom: 50px;
+    }
+    #amd3{
+        width: 0px;
+        height: 0px;
+        border: 25px solid;
+        border-color:transparent transparent transparent white;
+        position: relative;
+        bottom: 130px;
+    }
