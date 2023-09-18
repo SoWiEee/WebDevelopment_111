@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>21222鄭珽升</title>
+  </head>
+  <style>
+      @keyframes ani1{
+        0%{background:linear-gradient(45deg,red,white 50%,blue);}
+        12.5%{background:linear-gradient(45deg,red,white 30%,blue);}
+        25%{background:linear-gradient(45deg,red,white 10%,blue);}
+        37.5%{background:linear-gradient(45deg,red,white 30%,blue);}
+        50%{background:linear-gradient(45deg,red,white 50%,blue);}
+        62.5%{background:linear-gradient(45deg,red,white 70%,blue);}
+        75%{background:linear-gradient(45deg,red,white 90%,blue);}
+        82.5%{background:linear-gradient(45deg,red,white 70%,blue);}
+        100%{background:linear-gradient(45deg,red,white 50%,blue);}
+      }
+      @keyframes ani2{
+        0%{position: relative; left: 420px;}
+        10%{position: relative; left: 480px;}
+        20%{position: relative; left: 180px;}
+        305%{position: relative; left: 240px;}
+        40%{position: relative; left: 300px;}
+        50%{position: relative; left: 240px;}
+        60%{position: relative; left: 180px;}
+        70%{position: relative; left: 120px;}
+        80%{position: relative; left: 90px;}
+        90%{position: relative; left: 60px;}
+        100%{position: relative; left: 30px;}
+      }
+      #ani_box1{
+        width: 100px;
+        height: 100px;
+        animation: ani1 0.5s infinite linear;
+      }
+      #ani_box2{
+        width: 200px;
+        height: 30px;
+        background-color:rgb(236, 164, 131);
+        animation: ani2 0.15s infinite linear;
+      }
+      #cir{
+        width: 50px;
+        height: 70px;
+        border: 20px solid black;
+        border-radius: 50% ;
+        position: relative;
+        bottom: 70px;
+      }
+      #sc{
+        width: 20px;
+        height: 50px;
+        border-radius: 10%;
+        background: #e49262;
+        transition:background  2s, width 0.7s;
+      }
+      #sc:hover{
+        width: 300px;
+        height: 50px;
+        background: #e94707;
+      }
+      #TF1{
+        width: 50px;
+        height: 50px;
+        background: #07e938;
+        transition: transform 1s;
+      }
+      #TF1:hover{
+        transform: rolate(180deg) scale(2,2);
+        background: #07e938;
+      }
+  </style>
+  <body>
+      <div id="ani_box1"></div>
+      <br><br><br><br><br><br><br>
+      <div id="ani_box2" style="border-radius: 30% ;"></div>
+      <div id="cir" style="z-index:-1"></div>
+      <div id="sc"></div>
+      <div id="TF1"></div>
+  </body>
+</html> 
