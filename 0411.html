@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript</title>
+        <script>
+            function get(id){
+                return document.getElementById(id);
+            }
+            function event1(){
+                num1 = get("num1").value;
+                num2 = get("num2").value;
+                get("sum").value = parseInt(num1) + parseInt(num2);
+            }
+            function line(){
+                get("output").innerHTML= get("line").value;
+            }
+            function font(){
+                get("font2").style.fontSize = parseInt(get("font1").value)+"px";
+                
+            }
+        </script>
+    </head>
+    <body>
+        <input type="number" id="num1"> + <input type="number" id="num2">
+        = <input type="number" id="sum">
+        <button onclick="event1();">Click me!</button>
+        <span>音量大小：<input type="range" id="line" oninput="line();"><span id="output">30</span></span>
+        <br>
+        <span>字體大小：<input type="range" id="font1" oninput="font();"><span id="font2" style="font-size:20px">測試</span></span>
+        <div>選擇難度：</div>
+        <div style="font-family:Arial;font-size:20px;">
+            <div><input type="radio" name="hard">&nbsp; Hard</div>
+            <div><input type="radio" name="hard">&nbsp; Normal</div>
+            <div><input type="radio" name="hard">&nbsp; Easy</div>
+        </div>
+    </body>
+</html>
